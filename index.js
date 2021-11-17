@@ -15,5 +15,5 @@ app.get('/api/textpro/glitch', async (req, res) => {
 })
 
 app.listen(app.get("port"), () => {
-	console.log(`Example app listening at http://localhost:${port}`)
+	console.log(`Example app listening at http://localhost:${app.get("port")}`)
 })
