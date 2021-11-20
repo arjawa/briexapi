@@ -1,0 +1,106 @@
+//
+  API Documentation HTML Template  - 1.0.1
+  Copyright © 2016 Florian Nicolas
+  Licensed under the MIT license.
+  https://github.com/ticlekiwi/API-Documentation-HTML-Template
+  !
+doctype html
+html.no-js(lang='en')
+  head
+    meta(charset='utf-8')
+    title API - Documentation
+    meta(name='description' content='')
+    meta(name='author' content='ticlekiwi')
+    meta(http-equiv='cleartype' content='on')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge,chrome=1')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='assets/css/hightlightjs-dark.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js')
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+    link(href='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300&family=Source+Code+Pro:wght@300&display=swap' rel='stylesheet')
+    link(rel='stylesheet' href='assets/css/style.css' media='all')
+    script.
+      hljs.initHighlightingOnLoad();
+  body.one-content-column-version
+    .left-menu
+      .content-logo
+        .logo
+          img(alt='Wibu API' title='Wibu API' src='assets/images/logo.png' height='32')
+          span API Documentation
+        button#button-menu-mobile.burger-menu-icon
+          svg(width='34' height='34' viewBox='0 0 100 100')
+            path.line.line1(d='M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058')
+            path.line.line2(d='M 20,50 H 80')
+            path.line.line3(d='M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942')
+      .mobile-menu-closer
+      .content-menu
+        .content-infos
+          .info
+            b Version:
+            | 1.0.0
+          .info
+            b Last Updated:
+            | 20th Nov, 2021
+        ul
+          li.scroll-to-link.active(data-target='content-get-started')
+            a Get Started
+          li.scroll-to-link(data-target='content-get-characters')
+            a Textmaker
+          li.scroll-to-link(data-target='content-errors')
+            a Random Meme Indo
+    .content-page
+      .content
+        #content-get-started.overflow-hidden.content-section
+          h1 Get started
+          p
+            | This API provides some random api that maybe useless :v
+        #content-get-characters.overflow-hidden.content-section
+          h2 Textmaker
+          p
+            | To generate cool texts from textpro.me templates, make a GET request to the following url :
+            br
+            code.higlighted.break-word https://wibu.herokuapp.com/textmaker/[style]?text1=[text]&text2=[text]
+            br
+            pre
+              code.json
+                | Result example :
+                | {
+                |   "url": "https://textpro.me/images/user_image/2021/11/6198d3a2dd13a.jpg"
+                | }
+          br
+          h4 QUERY PARAMETERS
+          table
+            thead
+              tr
+                th Field
+                th Type
+                th Description
+            tbody
+              tr
+                td style
+                td String
+                td style name
+              tr
+                td text1
+                td String
+                td text for your image
+              tr
+                td text2
+                td String
+                td
+                  | (optional) second text for your image
+        #content-get-characters.overflow-hidden.content-section
+          h2 Random Meme Indo
+          p
+            | Get random indonesians meme, make a GET request to the following url :
+            br
+            code.higlighted.break-word https://wibu.herokuapp.com/meme
+            br
+            pre
+              code.json
+                | Result example :
+                | {
+                |   "url": "https://wibu.herokuapp.com/memes/9dea0149-5635-434d-ac40-96ac2988553d.jpeg"
+                | }
+    script(src='assets/js/script.js')
