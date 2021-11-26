@@ -1,0 +1,477 @@
+openapi: 3.0.0
+info: 
+    title: wibu API
+    description: wibu API documentations
+    version: 1.0.0
+    contact: 
+        name: briexenv
+    servers: 
+    -   http://localhost:5000
+paths:
+    /meme:
+        get:
+            summary: Random meme
+            description: Random meme bahasa indonesia.
+            tags:
+            -   random
+            responses:
+                "200":
+                    description: Successfull request
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    url:
+                                        type: string
+                                        description: image url
+                "500":
+                    description: Internal server error
+    /textmaker/{style}:
+        get:
+            summary: textpro.me API
+            description: |
+                Membuat gambar text effect menggunakan textpro.me scrapper<br>
+                daftar styles yang tersedia bisa dilihat di <a href="/styles.json">styles.json</a><br><br>
+                <i>Note: parameter <b>text2</b> dapat di isi jika styles ada pada category double text.</i>
+            tags:
+            -   maker
+            parameters:
+            -   name: style
+                in: path
+                required: true
+            -   name: text1
+                in: query
+                required: true
+            -   name: text2
+                in: query
+            responses: 
+                "200": 
+                    description: Successfull request
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    url:
+                                        type: string
+                                        description: image url
+                "400":
+                    description: Bad request
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        description: error details
+                "404": 
+                    description: Not found
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        description: style does not exist
+                "500":
+                    description: Internal server error
+    /youtube/search:
+        get:
+            summary: YouTube search
+            description: Menampilkan informasi video dari hasil pencarian YouTube.
+            tags:
+            -   search
+            parameters:
+            -   name: q
+                in: query
+                required: true
+            responses:
+                "200":
+                    description: Successfull request
+                    content:
+                        application-json:
+                            schema:
+                                type: array
+                                maxItems: 3
+                                items:
+                                    type: object
+                                    properties:
+                                        type:
+                                            type: string
+                                        videoId:
+                                            type: string
+                                        url:
+                                            type: string
+                                        title: 
+                                            type: string
+                                        description: 
+                                            type: string
+                                        image:
+                                            type: string
+                                        thumbnail:
+                                            type: string
+                                        seconds:
+                                            type: number
+                                        timestamp:
+                                            type: string
+                                        durations:
+                                            type: object
+                                            properties:
+                                                seconds:
+                                                    type: number
+                                                timestamp:
+                                                   type: string
+                                        ago:
+                                            type: string
+                                        views:
+                                            type: number
+                                        author:
+                                            type: object
+                                            properties:
+                                                author:
+                                                    type: string
+                                                url:
+                                                    type: string
+                "500":
+                    description: Internal server error
+    /youtube/audio:
+        get:
+            summary: YouTube audio
+            description: Mendownload audio dari link YouTube
+            tags:
+            -   download
+            parameters:
+            -   name: url
+                in: query
+                required: true
+            responses:
+                "200":
+                    description: Successfull request
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    thumbnail:
+                                        type: string
+                                    title:
+                                        type: string
+                                    quality:
+                                        type: string
+                                    type:
+                                        type: string
+                                    size:
+                                        type: string
+                                    link:
+                                        type: string
+                "400":
+                    description: Bad request
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        description: error details
+                "500":
+                    description: Internal server error
+    /youtube/video:
+        get:
+            summary: YouTube video
+            description: Mendownload video dari link YouTube
+            tags:
+            -   download
+            parameters:
+            -   name: url
+                in: query
+                required: true
+            responses:
+                "200":
+                    description: Successfull request
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    thumbnail:
+                                        type: string
+                                    title:
+                                        type: string
+                                    quality:
+                                        type: string
+                                    type:
+                                        type: string
+                                    size:
+                                        type: string
+                                    link:
+                                        type: string
+                "400":
+                    description: Bad request
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        description: error details
+                "500":
+                    description: Internal server error
+    /tiktok/audio:
+        get:
+            summary: Tiktok audio
+            description: Mendownload audio dari Tiktok
+            tags:
+            -   download
+            parameters:
+            -   name: url
+                in: query
+                required: true
+            responses:
+                "200":
+                    description: Successfull request
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    nickname:
+                                        type: string
+                                    uniqueId:
+                                        type: string
+                                    description:
+                                        type: string
+                                    durations:
+                                        type: number
+                                    thumbnail:
+                                        type: string
+                                    link:
+                                        type: string
+                "400":
+                    description: Bad request
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        description: error details
+                "500":
+                    description: Internal server error
+    /tiktok/video:
+        get:
+            summary: Tiktok video
+            description: Mendownload video dari Tiktok
+            tags:
+            -   download
+            parameters:
+            -   name: url
+                in: query
+                required: true
+            responses:
+                "200":
+                    description: Successfull request
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    nickname:
+                                        type: string
+                                    uniqueId:
+                                        type: string
+                                    description:
+                                        type: string
+                                    durations:
+                                        type: number
+                                    thumbnail:
+                                        type: string
+                                    nowm:
+                                        type: string
+                                    wm:
+                                        type: string
+                "400":
+                    description: Bad request
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        description: error details
+                "500":
+                    description: Internal server error
+    /ig/stalk:
+        get:
+            summary: Instagram stalk
+            description: Menampilkan informasi dari Instagram berdasarkan username
+            tags:
+            -   information
+            parameters:
+            -   name: username
+                in: query
+                required: true
+            responses:
+                "200":
+                    description: Successfull request
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    id:
+                                        type: string
+                                    bio:
+                                        type: string
+                                    followers:
+                                        type: number
+                                    following:
+                                        type: number
+                                    fullName:
+                                        type: string
+                                    highlightCount:
+                                        type: number
+                                    isBusinessAccount:
+                                        type: boolean
+                                    isRecentUser:
+                                        type: boolean
+                                    accountCategory:
+                                        type: string
+                                    linkedFacebookPage:
+                                        type: string
+                                    isPrivate:
+                                        type: boolean
+                                    isVerified:
+                                        type: boolean
+                                    profilePicHD:
+                                        type: string
+                                    username:
+                                        type: string
+                                    postsCount:
+                                        type: number
+                "404": 
+                    description: Not found
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        description: username does not exist
+                "500":
+                    description: Internal server error
+    /ig/foto:
+        get:
+            summary: Instagram foto
+            description: Mendownload foto dari Instagram
+            tags:
+            -   download
+            parameters:
+            -   name: url
+                in: query
+                required: true
+            responses:
+                "200":
+                    description: Successfull request
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    link: 
+                                        type: string
+                "400":
+                    description: Bad request
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        description: error details
+                "500":
+                    description: Internal server error
+    /ig/video:
+        get:
+            summary: Instagram video
+            description: Mendownload video dari Instagram
+            tags:
+            -   download
+            parameters:
+            -   name: url
+                in: query
+                required: true
+            responses:
+                "200":
+                    description: Successfull request
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    link: 
+                                        type: string
+                "400":
+                    description: Bad request
+                    content:
+                        application-json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        description: error details
+                "500":
+                    description: Internal server error
+    /pinterest/search:
+        get:
+            summary: Pinterest API
+            description: Menampilkan hasil pencarian dari Pinterest
+            tags:
+            -   search
+            parameters:
+            -   name: q
+                in: query
+                required: true
+            responses:
+                "200":
+                    description: Successfull request
+                    content:
+                        application-json:
+                            schema:
+                                type: array
+                                maxItems: 25
+                                items:
+                                    type: string
+                "500":
+                    description: Internal server error
+    /wallpaper/search:
+        get:
+            summary: Wallpaperflare API
+            description: Menampilkan hasil pencarian dari Wallpaperflare
+            tags:
+            -   search
+            parameters:
+            -   name: q
+                in: query
+                required: true
+            responses:
+                "200":
+                    description: Successfull request
+                    content:
+                        application-json:
+                            schema:
+                                type: array
+                                maxItems: 15
+                                items:
+                                    type: string
+                "500":
+                    description: Internal server error

@@ -21,6 +21,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "free-textmaker-alpha": "^0.0.3",
-    "pug": "^3.0.2"
+    "jsdom": "^18.1.0",
+    "swagger-ui-express": "^4.1.6",
+    "yamljs": "^0.3.0",
+    "yt-search": "^2.10.2"
   }
 }

@@ -1,11 +1,6 @@
 const router = require("express").Router();
-const fs = require("fs");
+const memeController = require("../controllers/memeController");
 
-router.get("", (req, res) => {
-    let memes = fs.readdirSync("./memes");
-    let random = memes[Math.floor(Math.random() * memes.length)];
-    res.json({"url": req.protocol + '://' + req.get('host') + "/memes/" + random})
-});
-
+router.get("/", memeController.getMeme);
 
 module.exports = router;
