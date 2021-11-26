@@ -24,7 +24,6 @@ app.use("/tiktok", require("./routes/tiktok"));
 app.use("/ig", require("./routes/ig"));
 app.use("/pinterest", require("./routes/pinterest"));
 app.use("/wallpaper", require("./routes/wp"));
-app.use("/wikipedia", require("./routes/wikipedia"));
 
 // notfound exception
 app.use((req, res) => {
