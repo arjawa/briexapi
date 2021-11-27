@@ -18,13 +18,7 @@ paths:
                 "200":
                     description: Successfull request
                     content:
-                        application-json:
-                            schema:
-                                type: object
-                                properties:
-                                    url:
-                                        type: string
-                                        description: image url
+                        image/jpeg: {}
                 "500":
                     description: Internal server error
     /textmaker/{style}:
@@ -456,7 +450,7 @@ paths:
     /wallpaper/search:
         get:
             summary: Wallpaperflare API
-            description: Menampilkan hasil pencarian dari Wallpaperflare
+            description: Menampilkan hasil pencarian dari Wallpapercave
             tags:
             -   search
             parameters:
