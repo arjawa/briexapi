@@ -1,5 +1,5 @@
 {
-  "name": "wibu-api",
+  "name": "briexapi",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/briexenv/xapi.git"
+    "url": "git+https://github.com/briexenv/briexapi.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/briexenv/xapi/issues"
+    "url": "https://github.com/briexenv/briexapi/issues"
   },
-  "homepage": "https://github.com/briexenv/xapi#readme",
+  "homepage": "https://github.com/briexenv/briexapi#readme",
   "dependencies": {
     "express": "^4.17.1",
     "free-textmaker-alpha": "^0.0.3",
