@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info: 
-    title: wibu API
-    description: wibu API documentations
+    title: briexapi
+    description: briexapi documentations
     version: 1.0.0
     contact: 
         name: briexenv

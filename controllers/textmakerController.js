@@ -1,5 +1,5 @@
 const textmaker = require('free-textmaker-alpha');
-const styles = require('../styles.json');
+const styles = require('../textpro.json');
 
 
 function textpro(style, text1, text2) {

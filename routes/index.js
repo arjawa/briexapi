@@ -6,7 +6,7 @@ const swaggerDocs = YAML.load("./docs.yaml");
 // swagger api docs
 const swaggerOpt = {
     customCss: '.swagger-ui .topbar { display: none }',
-    customSiteTitle: "wibu API"
+    customSiteTitle: "briexapi"
 };
 router.use("/docs", swaggerUi.serve);
 router.get("/docs", swaggerUi.setup(swaggerDocs, swaggerOpt));
