@@ -6,7 +6,6 @@ const wallpaper = async (req, res) => {
     let query = req.query.q;
     if (!query) return res.json({error: "please provide a valid parameter!"});
     try {
-        let query = req.params.q;
         const wp = await axios.get('https://wallpapercave.com/search?q=' + query);
         const $ = await cheerio.load(wp.data)
         hasil = []
