@@ -1,0 +1,233 @@
+openapi: 3.0.0
+info:
+  title: briexapi
+  version: 1.0.0
+  contact:
+    name: briexenv
+    email: briexenv@gmail.com
+servers:
+  - url: 'http://localhost:5000'
+  - url: 'https://localhost:5000'
+tags:
+  - name: maker
+    description: Image manipulation API
+  - name: search
+    description: Searching API
+  - name: download
+    description: Downloader API
+  - name: information
+    description: Information API
+  - name: random
+    description: Random API
+paths:
+  /api/meme:
+    $ref: "docs/meme.yaml"
+  /api/textpro/{style}:
+    $ref: "docs/textpro.yaml"
+  /api/yt/search:
+    $ref: "docs/yt-search.yaml"
+  /api/yt/audio:
+    $ref: "docs/yt-audio.yaml"
+  /api/yt/video:
+    $ref: "docs/yt-video.yaml"
+  /api/tiktok/audio:
+    $ref: "docs/tiktok-audio.yaml"
+  /api/tiktok/video:
+    $ref: "docs/tiktok-video.yaml"
+  /api/ig/stalk:
+    $ref: "docs/ig-stalk.yaml"
+  /api/ig/foto:
+    $ref: "docs/ig-foto.yaml"
+  /api/ig/video:
+    $ref: "docs/ig-video.yaml"
+  /api/pinterest:
+    $ref: "docs/pinterest.yaml"
+  /api/wallpaper:
+    $ref: "docs/wallpaper.yaml"
+components:
+  schemas:
+    YtSearch:
+      type: array
+      maxItems: 3
+      items:
+        type: object
+        properties:
+          type:
+            type: string
+          videoId:
+            type: string
+          url:
+            type: string
+          title:
+            type: string
+          description:
+            type: string
+          image:
+            type: string
+          thumbnail:
+            type: string
+          seconds:
+            type: number
+          timestamp:
+            type: string
+          durations:
+            type: object
+            properties:
+              seconds:
+                type: number
+              timestamp:
+                type: string
+          ago:
+            type: string
+          views:
+            type: number
+          author:
+            type: object
+            properties:
+              author:
+                type: string
+              url:
+                type: string
+    YtAudio:
+      type: object
+      properties:
+        thumbnail:
+          type: string
+        title:
+          type: string
+        quality:
+          type: string
+        type:
+          type: string
+        size:
+          type: string
+        link:
+          type: string
+    YtVideo:
+      type: object
+      properties:
+        thumbnail:
+          type: string
+        title:
+          type: string
+        quality:
+          type: string
+        type:
+          type: string
+        size:
+          type: string
+        link:
+          type: string
+    TiktokAudio:
+      type: object
+      properties:
+        nickname:
+          type: string
+        uniqueId:
+          type: string
+        description:
+          type: string
+        durations:
+          type: number
+        thumbnail:
+          type: string
+        link:
+          type: string
+    TiktokVideo:
+      type: object
+      properties:
+        nickname:
+          type: string
+        uniqueId:
+          type: string
+        description:
+          type: string
+        durations:
+          type: number
+        thumbnail:
+          type: string
+        nowm:
+          type: string
+        wm:
+          type: string
+    IgStalk:
+      type: object
+      properties:
+        id:
+          type: string
+        bio:
+          type: string
+        followers:
+          type: number
+        following:
+          type: number
+        fullName:
+          type: string
+        highlightCount:
+          type: number
+        isBusinessAccount:
+          type: boolean
+        isRecentUser:
+          type: boolean
+        accountCategory:
+          type: string
+        linkedFacebookPage:
+          type: string
+        isPrivate:
+          type: boolean
+        isVerified:
+          type: boolean
+        profilePicHD:
+          type: string
+        username:
+          type: string
+        postsCount:
+          type: number
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+  parameters:
+    searchParam:
+      name: q
+      in: query
+      required: true
+      schema:
+        type: string
+    downloadParam:
+      name: url
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    arrayUrl:
+      description: Successfull request
+      content:
+        application-json:
+          schema:
+            type: array
+            items:
+              type: string
+    objectUrl:
+      description: Successfull request
+      content:
+        application-json:
+          schema:
+            type: object
+            properties:
+              url:
+                type: string
+    400BadRequest:
+      description: Parameter is missing or invalid
+    401Unauthorized:
+      description: API key is missing or invalid
+      headers:
+        WWW_Authenticate:
+          schema:
+            type: string
+    404NotFound:
+      description: Parameter or data does not exists
+security:
+  - ApiKeyAuth: []

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>briexapi | <%= title %></title>
+    <script type="module" src="../js/rapidoc-min.js"></script>
+    <link rel="stylesheet" href=".../css/style.css" type="text/css" media="all" />
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 10px;
+      }
+      body {
+        background: #fff;
+        margin: 0;
+        font-family: "Open Sans", Avenir, "Segoe UI", Arial, Sans-Serif;
+        font-size: 1.6rem;
+      }
+      body.dark {
+        background: #333;
+      }
+      #landing-page {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Open Sans', sans-serif;
+      }
+      #landing-page h1 {
+        font-size: 4rem;
+        display: flex;
+        color: #bbb;
+        letter-spacing: 4px;
+        position: relative;
+      }
+      #landing-page h1::after {
+        content: "v 1.0.0";
+        position: absolute;
+        right: -36px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8rem;
+        font-weight: 300;
+        height: 18px;
+        width: 36px;
+        background: #71b7ff;
+        border-radius: 15px;
+        color: #333;
+        letter-spacing: normal;
+      }
+@media (max-width: 480px) {
+        #landing-page h1 {
+          font-size: 3.6rem;
+        }
+      }
+      .link-btn {
+        margin-top: 20px;
+      }
+      #header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 52px;
+        width: 100%;
+        z-index: 1;
+        background: #404040;
+      }
+@media (max-width: 480px) {
+        #header {
+          position: fixed;
+          top: 0;
+          left: 0;
+        }
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        padding: 0 20px;
+      }
+      .logo span {
+        color: #bbb;
+        font-size: 22px;
+        font-family: inherit;
+      }
+      .btn-group {
+        text-align: right;
+        padding: 0 20px;
+      }
+      .sign-btn {
+        flex: 1;
+      }
+@media (max-width: 480px) {
+        .btn-group,
+        .logo {
+          padding: 0 10px;
+        }
+      }
+      .btn {
+        padding: 2px 5px;
+        font-size: 12px;
+        height: 28px;
+        line-height: 20px;
+        width: 70px;
+        border-radius: 2px;
+        display: inline-block;
+        text-align: center;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-family: inherit;
+        letter-spacing: normal;
+        text-decoration: none;
+      }
+      .btn-sign-up {
+        border: 2px solid #7ec699;
+        color: #bbb;
+        background: transparent;
+        margin-right: 5px;
+      }
+      .btn-sign-in {
+        border: 2px solid #7ec699;
+        color: #333;
+        background: #7ec699;
+      }
+      .btn-sign-up:hover {
+        color: #444444;
+        background: #7ec699;
+      }
+      .btn-sign-in:hover {
+        color: #bbb;
+        background: transparent;
+      }
+      #footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 52px;
+        color: #bbb;
+        position: absolute;
+        bottom: 0;
+      }
+      rapi-doc {
+        height: calc(100vh - 52px);
+      }
+    </style>
+  </head>
+  <body class="dark">
+    <rapi-doc
+      spec-url="../docs.yaml"
+      theme="dark"
+      sort-tags="true"
+      use-path-in-nav-bar="true"
+      heading-text="briexapi"
+      allow-spec-file-load="false"
+      allow-spec-url-load="false"
+      render-style="focused"
+      primary-color="#7ec699"
+      show-header="false"
+      >
+      <footer slot="footer" id="foo">
+        <p>
+          &copy;2021 | briexenv
+        </p>
+      </footer>
+    </rapi-doc>
+    <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+  </body>
+</html>

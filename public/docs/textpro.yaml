@@ -1,0 +1,74 @@
+get:
+  tags:
+    - maker
+  summary: textpro.me image generator
+  description: |
+    Membuat gambar text effect menggunakan textpro.me scrapper
+
+    Daftar styles yang tersedia bisa dilihat di
+    [styles.json](../styles.json)
+
+    _Note: parameter `text2` dapat di isi jika style ada pada
+    category `double text`_
+  x-code-samples:
+    - lang: js
+      label: Node js
+      source: |
+        const axios = require("axios");
+        
+        const opt = {
+          headers: {
+            "X-API-Key": "yourapikey"
+          }
+        };
+        (async () => {
+          const singleText = await axios.get("https://briexapi.herokuapp.com/api/textpro/blackpink?text1={text}", opt);
+          const doubleText = await axios.get("https://briexapi.herokuapp.com/api/textpro/marvel?text1={text}&text2={text}", opt);
+          let img1 = singleText.data.url;
+          let img2 = doubleText.data.url;
+          // do something with image url
+        })();
+    - lang: js
+      label: JS fetch
+      source: |
+        (async () => {
+          const resp = await fetch("https://briexapi.herokuapp.com/api/textpro/thunder?text1={text}", {
+            method: "GET",
+            headers: {
+              "X-API-Key": "yourapikey"
+            }
+          });
+          let json = await resp.json();
+          // do something with json
+        })();
+    - lang: python
+      label: Python
+      source: |
+        import requests
+        resp = requests.get("https://briexapi.herokuapp.com/api/textpro/gameover?text1={text}&text2={text}", headers={"X-API-Key":"yourapikey"})
+        json = resp.json()
+        # do something with json
+  parameters:
+    - name: style
+      in: path
+      required: true
+      schema:
+        type: string
+        example: neon
+    - name: text1
+      in: query
+      required: true
+      schema:
+        type: string
+        example: briexenv
+    - name: text2
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      $ref: '../docs.yaml#/components/responses/objectUrl'
+    '400':
+      $ref: '../docs.yaml#/components/responses/400BadRequest'
+    '404':
+      $ref: '../docs.yaml#/components/responses/404NotFound'

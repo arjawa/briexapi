@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>briexapi | <%= title %></title>
+  <script type="module" src="../js/rapidoc-min.js"></script>
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+</head>
+<body class="dark">
+  <header id="header">
+    <div class="logo">
+      <lord-icon
+        src="https://cdn.lordicon.com/xxtkutpo.json"
+        trigger="loop"
+        colors="primary:#ffffff,secondary:#7ec699"
+        stroke="50"
+        scale="50"
+        style="width:50px; height:50px;">
+      </lord-icon>
+      <span>briexapi</span>
+    </div>
+    <div class="btn-group sign-btn">
+      <% if (userData) {
+        %>
+        <button class="btn btn-custom" onclick="window.location='../logout'">Sign Out</button>
+        <%
+      } else {
+        %>
+        <button class="btn btn-outline-custom" onclick="window.location='../register'">Sign Up</button>
+        <button class="btn btn-custom" onclick="window.location='../login'">Sign In</button>
+        <%
+      } %>
+    </div>
+  </header>
+  <rapi-doc
+    spec-url="../docs.yaml"
+    theme="dark"
+    sort-tags="true"
+    use-path-in-nav-bar="true"
+    heading-text="briexapi"
+    allow-spec-file-load="false"
+    allow-spec-url-load="false"
+    render-style="view"
+    primary-color="#7ec699"
+    show-header="false"
+    >
+    <% if (userData) {
+      %>
+      <div slot="overview" id="auth-desc">
+        <div class="sub-title">
+          Terms Of Service
+        </div>
+        <ul>
+          <li>Silahkan daftar menggunakan email untuk mendapatkan apikey.</li>
+          <li>Setiap akun dibatasi hanya 100 request perhari.</li>
+          <li>Untuk limit tanpa batas silahkan hosting sendiri :v.</li>
+        </ul>
+        <p>
+          Your API key :
+        </p>
+      </div>
+      <div slot="overview" id="auth-info">
+        <button id="copy" class="tool-btn">Copy</button>
+        <pre><code id="api-key"><%= userData.apikey %></code>
+        </pre>
+      </div>
+      <%
+    } else {
+      %>
+      <div slot="overview" id="auth-desc">
+        briexapi documentations
+      </div>
+      <%
+    } %>
+    <footer slot="footer" id="footer">
+      <p>
+        &copy;2021 | briexenv
+      </p>
+    </footer>
+  </rapi-doc>
+  <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
