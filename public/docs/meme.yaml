@@ -28,3 +28,9 @@ get:
       description: Successfull request
       content:
         image/jpeg: {}
+        application-json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
