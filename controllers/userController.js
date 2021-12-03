@@ -34,6 +34,7 @@ const login = async (req, res) => {
   console.log(req.body)
   if (!email || !password) return res.status(400).send("Email or password can not be empty!");
 
+try {
   let data = await userLogin(email);
   if (typeof data === "object") {
     if (bcrypt.compareSync(password, data.password)) {
@@ -47,6 +48,9 @@ const login = async (req, res) => {
   } else {
     res.status(400).send("Invalid email or password");
   }
+} catch (e) {
+	console.log(e);
+}
 };
 
 const registerForm = async (req, res) => {
