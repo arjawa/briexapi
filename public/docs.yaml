@@ -6,8 +6,8 @@ info:
     name: briexenv
     email: briexenv@gmail.com
 servers:
-  - url: 'http://localhost:5000'
-  - url: 'https://localhost:5000'
+  - url: 'https://briexapi.herokuapp.com'
+  - url: 'https://briexapi.b4a.app'
 tags:
   - name: maker
     description: Image manipulation API
