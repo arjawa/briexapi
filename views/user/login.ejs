@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>briexapi | <%= title %></title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="dark">
+  <main class="main">
+    <h1>briexapi</h1>
+    <form class="form" action="">
+      <label for="email">Email address</label>
+      <input type="email" name="email" required>
+      <label for="password">Password <span class="label-desc"><a href="/forgot-password">I forgot my password</a></span></label>
+      <input type="password" name="password" required>
+      <div class="flash-msg hidden"></div>
+      <button type="submit" id="login" class="btn btn-custom">Sign In</button>
+    </form>
+    <div class="form-extra">
+      Don't have account yet? <a href="/register">Sign Up</a>
+    </div>
+  </main>
+  <script>
+    document.querySelector("#login").addEventListener("click", async (e) => {
+      e.preventDefault();
+      let email = document.querySelector("input[name=email]").value;
+      let password = document.querySelector("input[name=password]").value;
+
+      let data = {
+        email,
+        password
+      }
+      const resp = await fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+      if (resp.status === 200) {
+        flashMsg("success-msg", await resp.text());
+        setTimeout(() => window.location = "/docs", 1500);
+      } else {
+        flashMsg("error-msg", await resp.text());
+      }
+    });
+    function flashMsg(type, text) {
+      const div = document.querySelector(".flash-msg");
+      div.classList.remove("hidden");
+      div.classList.add(type);
+      div.textContent = text;
+    }
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

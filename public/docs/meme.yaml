@@ -1,0 +1,30 @@
+get:
+  tags:
+    - random
+  summary: Random meme
+  description: Random meme bahasa indonesia
+  x-code-samples:
+    - lang: js
+      label: Node js
+      source: |
+        const axios = require("axios");
+  
+        (async () => {
+          const buffer = await axios.get("https://briexapi.herokuapp.com/api/meme", {
+            headers: {
+              "X-API-Key": "yourapikey"
+            }
+          });
+          // do something with image buffer
+        })();
+    - lang: python
+      label: Python
+      source: |
+        import requests
+        resp = requests.get("https://briexapi.herokuapp.com/api/meme", headers={"X-API-Key":"yourapikey"})
+        # do something with image buffer
+  responses:
+    '200':
+      description: Successfull request
+      content:
+        image/jpeg: {}

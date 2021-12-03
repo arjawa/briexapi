@@ -1,0 +1,51 @@
+get:
+  tags:
+    - download
+  summary: YouTube video
+  description: Mendownload video dari YouTube
+  x-code-samples:
+    - lang: js
+      label: Node js
+      source: |
+        const axios = require("axios");
+  
+        (async () => {
+          const resp = await axios.get("https://briexapi.herokuapp.com/api/yt/video?url={url}", {
+            headers: {
+              "X-API-Key": "yourapikey"
+            }
+          });
+          let json = resp.data;
+          // do something with json
+        })();
+    - lang: js
+      label: JS fetch
+      source: |
+        (async () => {
+          const resp = await fetch("https://briexapi.herokuapp.com/api/yt/video?url={url}", {
+            method: "GET",
+            headers: {
+              "X-API-Key": "yourapikey"
+            }
+          });
+          let json = await resp.json();
+          // do something with json
+        })();
+    - lang: python
+      label: Python
+      source: |
+        import requests
+        resp = requests.get("https://briexapi.herokuapp.com/api/yt/video?url={url}", headers={"X-API-Key":"yourapikey"})
+        json = resp.json()
+        # do something with json
+  parameters:
+    - $ref: '../docs.yaml#/components/parameters/downloadParam'
+  responses:
+    '200':
+      description: Successfull request
+      content:
+        application-json:
+          schema:
+            $ref: '../docs.yaml#/components/schemas/YtVideo'
+    '400':
+      $ref: '../docs.yaml#/components/responses/400BadRequest'
