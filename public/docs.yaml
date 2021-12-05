@@ -187,6 +187,10 @@ components:
     ApiKeyAuth:
       type: apiKey
       in: header
+      name: X-API-Key
+    AccessTokenAuth:
+      type: apiKey
+      in: header
       name: X-Access-Token
   parameters:
     searchParam:
@@ -231,3 +235,4 @@ components:
       description: Parameter or data does not exists
 security:
   - ApiKeyAuth: []
+  - AccessTokenAuth: []

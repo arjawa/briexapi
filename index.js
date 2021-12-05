@@ -15,7 +15,7 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 app.use(cors());
-// app.use(morgan("[:date[clf]] :remote-addr :method :url :status - :response-time ms"));
+app.use(morgan("[:date[clf]] :remote-addr :method :url :status - :response-time ms"));
 app.use("/", express.static("./public"));
 app.use((req, res, next) => {
   if (req.url === '/favicon.ico') {

@@ -31,7 +31,6 @@ const login = async (req, res) => {
     email,
     password
   } = req.body;
-  console.log(req.body)
   if (!email || !password) return res.status(400).send("Email or password can not be empty!");
 
   try {
@@ -40,7 +39,6 @@ const login = async (req, res) => {
       if (bcrypt.compareSync(password, data.password)) {
         req.session.loggedIn = true;
         req.session.userData = data;
-        // res.redirect("/docs");
         res.send("Login success");
       } else {
         res.status(400).send("Password incorrect");

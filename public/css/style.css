@@ -315,25 +315,21 @@ pre code {
 }
 .btn-outline-custom {
   border: 2px solid #7ec699;
-  color: #bbb;
+  color: #333;
   background: transparent;
   margin-right: 5px;
 }
 .btn-custom {
   border: 2px solid #7ec699;
-  color: #efefef;
+  color: #333;
   background: #7ec699;
 }
-.dark .btn-custom {
-  color: #333;
+.dark .btn-outline-custom {
+  color: #bbb;
 }
 .btn-outline-custom:hover {
-  color: #444444;
+  color: #333;
   background: #7ec699;
-}
-.btn-custom:hover {
-  color: #bbb;
-  background: transparent;
 }
 #footer {
   display: none;
